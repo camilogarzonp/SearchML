@@ -6,3 +6,9 @@
 //
 
 import Foundation
+
+extension String {
+    func replacingSpaces(with string: String) -> String {
+        return self.replacingOccurrences(of: " ", with: string)
+    }
+}

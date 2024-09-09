@@ -8,3 +8,17 @@
 
 "searchML" = "Buscar en Mercado Libre";
 "cancel" = "Cancelar";
+"errorLoadImage" = "Error al intentar cargar la imagen";
+"installments" = "%d cuotas de $%.0f";
+"availableQuantity" = "Quedan %d disponibles";
+"lastUnit" = "¡Último disponible!";
+"freeDelivery" = "Envío gratis";
+"seller" = "Vendido por";
+"sellerStatus" = "Este vendedor tiene estatus %@";
+"condition" = "Este es un producto %@";
+"buyNow" = "Comprar ahora";
+"addToCart" = "Agregar al carrito";
+"hereShowProducts" = "Acá podrás visualizar los productos de la busqueda realizada";
+"noPhoto" = "Error de descarga";
+"successfulPurchase" = "Compra exitosa";
+"successfulPurchase.message" = "Has comprado %@ por $%.0f";

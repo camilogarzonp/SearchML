@@ -9,51 +9,24 @@ import SwiftUI
 
 struct HeaderView: View {
     
-    @State var text = ""
+    @ObservedObject var vm: SearchViewVM
+    @Binding var text: String
+    @Binding var isList: Bool
+    @Binding var showDetailPage: Bool
     
     var body: some View {
-        ZStack(alignment: .top) {
-            Rectangle()
+        ZStack(alignment: .bottom) {
+            RoundedRectangle(cornerRadius: 25)
                 .foregroundStyle(Color.yellow)
-                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.35)
+                .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 0.20)
+                .padding(.top, -50)
             
-            SearchView(text: $text)
-            
+            SearchBarView(vm: vm, text: $text, isList: $isList, showDetailPage: $showDetailPage)
+                .padding(.top, 8)
         }
-        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
-        .padding(.top, 0)
     }
 }
 
 #Preview {
-    HeaderView()
-}
-
-struct SearchView: View {
-    
-    @Binding var text: String
-    
-    var body: some View {
-        VStack {
-            ZStack {
-                HStack {
-                    TextField("searchML", text: $text)
-                        .padding(.trailing, 75)
-                }
-                .padding()
-                .background(Color.white)
-                
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.text = ""
-                    })
-                    {
-                       Text("cancel")
-                    }.foregroundStyle(Color.black)
-                }.padding()
-            }.padding()
-        }
-    }
+    HeaderView(vm: SearchViewVM(), text: Binding(get: { return "" }, set: { _ in }), isList: Binding(get: {return true}, set: { _ in }), showDetailPage: Binding(get: {return true}, set: { _ in }))
 }

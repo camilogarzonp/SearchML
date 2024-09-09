@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct CategorySearch: Decodable, Identifiable, Equatable {
+    let id: String
+    let name: String
+}

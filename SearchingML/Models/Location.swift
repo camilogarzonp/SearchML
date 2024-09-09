@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct Location: Decodable {
+    let id, name: String
+}

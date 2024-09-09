@@ -8,3 +8,17 @@
 
 "searchML" = "Search in Mercado Libre";
 "cancel" = "Cancel";
+"errorLoadImage" = "Error trying to load image";
+"installments" = "%d installments of $%.0f";
+"availableQuantity" = "%d available";
+"lastUnit" = "Last one available!";
+"freeDelivery" = "Free delivery";
+"seller" = "Sell by";
+"sellerStatus" = "This seller has status %@";
+"condition" = "This is a %@ product";
+"buyNow" = "Buy now";
+"addToCart" = "Add to Cart";
+"hereShowProducts" = "Here you can visualize the products of the search you made";
+"noPhoto" = "Download error";
+"successfulPurchase"= "Successful purchase";
+"successfulPurchase.message" = "You bought %@ for $%.0f";

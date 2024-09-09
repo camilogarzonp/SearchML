@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct ValueStruct: Decodable {
+    let number: Double?
+    let unit: String?
+}

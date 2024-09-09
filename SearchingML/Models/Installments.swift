@@ -6,3 +6,15 @@
 //
 
 import Foundation
+
+struct Installments: Decodable {
+    let quantity: Int
+    let amount: Double
+    let rate: Double
+    let currencyID: String
+    
+    enum CodingKeys: String, CodingKey {
+        case quantity, amount, rate
+        case currencyID = "currency_id"
+    }
+}

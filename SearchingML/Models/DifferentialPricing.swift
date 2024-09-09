@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+struct DifferentialPricing: Decodable {
+    let id: Int
+}

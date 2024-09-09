@@ -9,10 +9,10 @@ import SwiftUI
 
 struct SearchBarView: View {
     
+    @ObservedObject var vm: SearchViewVM
     @Binding var text: String
     @Binding var isList: Bool
-    var data : [String]
-    @StateObject var vm = SearchViewVM()
+    @Binding var showDetailPage: Bool
     
     @State var isItemSelected = false
     @State var currentSelection = ""
@@ -21,7 +21,10 @@ struct SearchBarView: View {
         VStack {
             HStack(spacing: 20) {
                 ZStack {
-                    HStack {
+                    HStack(spacing: 8) {
+                        Image(systemName: "magnifyingglass")
+                            .font(.title3)
+                        
                         TextField("searchML", text: $text)
                             .onChange(of: text) {
                                 self.isItemSelected = true
@@ -30,6 +33,10 @@ struct SearchBarView: View {
                     }
                     .padding()
                     .background(Color.white)
+                    .onSubmit {
+                        vm.searchProduct(text: text)
+                        self.showDetailPage = false
+                    }
                     
                     if !self.text.isEmpty {
                         HStack {
@@ -41,7 +48,10 @@ struct SearchBarView: View {
                                 self.isItemSelected = false
                             })
                             {
-                                Text("cancel")
+                                Image(systemName: "xmark.circle.fill")
+                                    .foregroundStyle(Color.gray)
+                                    .padding(.trailing, 10)
+                                    .frame(width: 20, height: 20, alignment: .center)
                             }.foregroundStyle(Color.black)
                         }.padding()
                     }
@@ -64,26 +74,6 @@ struct SearchBarView: View {
                 .frame(width: 30, height: 30)
             }
             .padding(.horizontal, 8)
-            
-            if !self.text.isEmpty {
-                if !isItemSelected  || currentSelection != self.text {
-                    List(self.data.filter{$0.lowercased().contains(self.text.lowercased())}, id: \.self) { i in
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            Text("\(i)")
-                                .foregroundStyle(Color.black)
-                        }
-                        .onTapGesture {
-                            print(i)
-                            self.text = i
-                            self.currentSelection = i
-                            self.isItemSelected = false
-                        }
-                    }
-                    .cornerRadius(10)
-                    .frame(height: 500)
-                    .foregroundStyle(Color.clear)
-                }
-            }
         }
         .padding()
     }
@@ -91,5 +81,5 @@ struct SearchBarView: View {
 
 
 #Preview {
-    SearchBarView(text: Binding(get: { return "" }, set: { _ in }), isList: Binding(get: {return true}, set: { _ in }), data: [""])
+    SearchBarView(vm: SearchViewVM(), text: Binding(get: { return "" }, set: { _ in }), isList: Binding(get: {return true}, set: { _ in }), showDetailPage: Binding(get: {return true}, set: { _ in }))
 }
