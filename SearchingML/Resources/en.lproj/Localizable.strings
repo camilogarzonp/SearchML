@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  SearchingML
+
+  Created by Juan Camilo Garzon Patino on 3/09/24.
+  
+*/
+
+"searchML" = "Search in Mercado Libre";
+"cancel" = "Cancel";
