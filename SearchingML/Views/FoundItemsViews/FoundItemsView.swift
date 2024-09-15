@@ -33,6 +33,7 @@ struct FoundItemsView: View {
     var body: some View {
         VStack {
             if let products = vm.products {
+                
                 if isList {
                     List(products, id: \.self) { product in
                         Button {
@@ -268,8 +269,4 @@ struct FoundItemsView: View {
             }
         }
     }
-}
-
-#Preview {
-    FoundItemsView(vm: SearchViewVM(), isList: Binding(get: { return true }, set: { _ in  }), showDetailPage: Binding(get: { return true }, set: { _ in  }))
 }

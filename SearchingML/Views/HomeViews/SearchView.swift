@@ -26,20 +26,7 @@ struct SearchView: View {
                     .animation(.easeInOut, value: showDetailPage)
             }
             
-            if vm.showProgress {
-                ProgressView()
-                    .frame(width: 100, height: 100)
-            } else {
-                if vm.products == nil {
-                    Text("hereShowProducts")
-                        .font(.subheadline)
-                        .foregroundStyle(Color.gray)
-                        .padding([.horizontal, .top], 30)
-                        .multilineTextAlignment(.center)
-                } else {
-                    FoundItemsView(vm: vm, isList: $isList, showDetailPage: $showDetailPage)
-                }
-            }
+            BodyContentView(vm: vm, isList: $isList, showDetailPage: $showDetailPage)
             
             Spacer()
         }

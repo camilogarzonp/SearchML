@@ -26,7 +26,3 @@ struct HeaderView: View {
         }
     }
 }
-
-#Preview {
-    HeaderView(vm: SearchViewVM(), text: Binding(get: { return "" }, set: { _ in }), isList: Binding(get: {return true}, set: { _ in }), showDetailPage: Binding(get: {return true}, set: { _ in }))
-}

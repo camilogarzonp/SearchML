@@ -50,7 +50,3 @@ struct CategorySegmentedView: View {
         }
     }
 }
-
-#Preview {
-    CategorySegmentedView(vm: SearchViewVM())
-}

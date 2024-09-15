@@ -78,8 +78,3 @@ struct SearchBarView: View {
         .padding()
     }
 }
-
-
-#Preview {
-    SearchBarView(vm: SearchViewVM(), text: Binding(get: { return "" }, set: { _ in }), isList: Binding(get: {return true}, set: { _ in }), showDetailPage: Binding(get: {return true}, set: { _ in }))
-}

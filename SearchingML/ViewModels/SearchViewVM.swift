@@ -14,6 +14,7 @@ class SearchViewVM : ObservableObject {
     @Published var currentCategory: CategorySearch? = nil
     @Published var categories: [CategorySearch]?
     @Published var showProgress: Bool = false
+    var lastTextSearch: String = ""
     
     private let accessToken = "tu_access_token"
     
@@ -22,7 +23,12 @@ class SearchViewVM : ObservableObject {
     }
     
     func searchProduct(text: String) {
-        fetchData(product: text)
+        let product = text.replacingSpaces(with: "%20")
+        
+        if lastTextSearch.lowercased() != product.lowercased() {
+            lastTextSearch = product
+            fetchData(product: product)
+        }
     }
     
     func searchCategory(categoryID: String) {
@@ -34,8 +40,7 @@ class SearchViewVM : ObservableObject {
         self.response = nil
         self.products = nil
         
-        fetchProducts(searchType: .text(query: product.replacingSpaces(with: "%20")
-                                       ), siteId: "MLA", accessToken: self.accessToken, modelType: Response?.self) { result in
+        fetchProducts(searchType: .text(query: product), siteId: "MLA", accessToken: self.accessToken, modelType: Response?.self) { result in
             switch result {
             case .success(let response):
                 DispatchQueue.main.async {
